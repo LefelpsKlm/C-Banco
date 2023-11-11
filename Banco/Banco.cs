@@ -62,11 +62,18 @@ namespace Banco
 
         private void buttonDepositar_Click(object sender, EventArgs e)
         {
-            double valor = Convert.ToDouble(textBoxDeposito.Text);
-            cliente.Creditar(valor);
-            MessageBox.Show("Deu serto pae. 😎");
-            labelSaldoValor.Text = cliente.saldo.ToString();
-            textBoxDeposito.Clear();
+            try
+            {
+                double valor = Convert.ToDouble(textBoxDeposito.Text);
+                cliente.Creditar(valor);
+                textBoxDeposito.Clear();
+                MessageBox.Show("Deu serto pae. 😎");
+                labelSaldoValor.Text = cliente.saldo.ToString("0.00");
+            }
+            catch
+            {
+
+            }
         }
 
         private void buttonSacar_Click(object sender, EventArgs e)
